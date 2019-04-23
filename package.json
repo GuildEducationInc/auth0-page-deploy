@@ -1,0 +1,66 @@
+{
+  "name": "auth0-page-deploy",
+  "description": "Simple tool to deploy one or more Auth0 hosted pages",
+  "version": "1.0.0",
+  "author": "Guild Engineering <engineering@guildeducation.com>",
+  "bin": {
+    "auth0-page-deploy": "./bin/run"
+  },
+  "bugs": "https://github.com/GuildEducationInc/auth0-page-deploy/issues",
+  "dependencies": {
+    "@oclif/command": "^1",
+    "@oclif/config": "^1",
+    "@oclif/plugin-help": "^2",
+    "auth0": "^2.17.0",
+    "auth0-source-control-extension-tools": "^3.3.2",
+    "tslib": "^1"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1",
+    "@oclif/test": "^1",
+    "@oclif/tslint": "^3",
+    "@types/auth0": "^2.9.10",
+    "@types/chai": "^4",
+    "@types/mocha": "^5",
+    "@types/node": "^10",
+    "chai": "^4",
+    "globby": "^8",
+    "mocha": "^5",
+    "nyc": "^13",
+    "ts-node": "^8",
+    "tslint": "^5",
+    "tslint-config-guild": "^1.0.0",
+    "typescript": "^3.3"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/GuildEducationInc/auth0-page-deploy",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "auth0-page-deploy",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "GuildEducationInc/auth0-page-deploy",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "tslint -p test -t stylish",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "types": "lib/index.d.ts"
+}
