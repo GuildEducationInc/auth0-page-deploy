@@ -27,7 +27,20 @@ export default class PageDeployer {
       : this.updatePages([page])
   }
 
-  // deployPages() {}
+  deployPages(pagePaths: string[]): Promise<any> {
+    const pages = pagePaths.map(pagePath => loadPage(pagePath))
+    const loginPageIndex = pages.findIndex(p => this.isLoginPage(p))
+
+    if (loginPageIndex >= 0) {
+      const loginPage = pages.splice(loginPageIndex, 1)[0]
+      return Promise.all([
+        this.updateLoginPage(loginPage),
+        this.updatePages(pages)
+      ])
+    } else {
+      return this.updatePages(pages)
+    }
+  }
 
   private async updateLoginPage(page: Page) {
     const globalClients = await this.client.getClients({ is_global: true })
