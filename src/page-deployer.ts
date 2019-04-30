@@ -1,4 +1,5 @@
 import { Data, ManagementClient } from 'auth0'
+import path from 'path'
 
 import { loadPage, Page } from './page'
 
@@ -18,7 +19,7 @@ const PAGE_NAME_MAP: { [key: string]: string } = {
 // Loosely based on https://github.com/auth0-extensions/auth0-source-control-extension-tools/blob/master/src/auth0/handlers/pages.js
 export default class PageDeployer {
   static isValidPage(fileName: string): boolean {
-    return PAGE_NAMES.indexOf(fileName) >= 0
+    return PAGE_NAMES.indexOf(path.basename(fileName, '.html')) >= 0
   }
 
   constructor(private readonly client: ManagementClient) {}
