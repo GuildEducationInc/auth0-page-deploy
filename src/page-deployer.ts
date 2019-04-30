@@ -3,18 +3,13 @@ import path from 'path'
 
 import { loadPage, Page } from './page'
 
-const PAGE_NAMES = [
-  'login.html',
-  'password_reset.html',
-  'guardian_multifactor.html',
-  'error_page.html'
-]
-
 const PAGE_NAME_MAP: { [key: string]: string } = {
   guardian_multifactor: 'guardian_mfa_page',
   password_reset: 'change_password',
-  error_page: 'error_page'
+  error_page: 'error_page',
+  login: 'login'
 }
+const PAGE_NAMES = Object.keys(PAGE_NAME_MAP)
 
 // Loosely based on https://github.com/auth0-extensions/auth0-source-control-extension-tools/blob/master/src/auth0/handlers/pages.js
 export default class PageDeployer {
