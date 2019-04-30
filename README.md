@@ -29,21 +29,43 @@ USAGE
 # Commands
 <!-- commands -->
 * [`auth0-page-deploy deploy [FILE]`](#auth0-page-deploy-deploy-file)
+* [`auth0-page-deploy deploy-all [GLOB]`](#auth0-page-deploy-deploy-all-glob)
 * [`auth0-page-deploy help [COMMAND]`](#auth0-page-deploy-help-command)
 
 ## `auth0-page-deploy deploy [FILE]`
 
-Deploy an auth0 page
+Deploy an Auth0 page
 
 ```
 USAGE
   $ auth0-page-deploy deploy [FILE]
 
 OPTIONS
-  -n, --name=name  name of Auth0 page
+  -n, --name=name              name of Auth0 page
+  --accessToken=accessToken    Auth0 Management API access token
+  --clientId=clientId          Auth0 client id to use to obtain an access token
+  --clientSecret=clientSecret  Auth0 client secret to use to obtain an access token
+  --domain=domain              (required) Auth0 domain
 ```
 
 _See code: [src/commands/deploy.ts](https://github.com/GuildEducationInc/auth0-page-deploy/blob/v1.0.0/src/commands/deploy.ts)_
+
+## `auth0-page-deploy deploy-all [GLOB]`
+
+Deploy all provided Auth0 pages
+
+```
+USAGE
+  $ auth0-page-deploy deploy-all [GLOB]
+
+OPTIONS
+  --accessToken=accessToken    Auth0 Management API access token
+  --clientId=clientId          Auth0 client id to use to obtain an access token
+  --clientSecret=clientSecret  Auth0 client secret to use to obtain an access token
+  --domain=domain              (required) Auth0 domain
+```
+
+_See code: [src/commands/deploy-all.ts](https://github.com/GuildEducationInc/auth0-page-deploy/blob/v1.0.0/src/commands/deploy-all.ts)_
 
 ## `auth0-page-deploy help [COMMAND]`
 
